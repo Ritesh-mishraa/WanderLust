@@ -3,8 +3,17 @@
 <style>
   #filters{
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
+    overflow-x: auto;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+  .col1{
+    flex: 80%;
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
   }
   .filter{
     margin-top: 1rem;
@@ -12,6 +21,7 @@
     margin-right: 2rem;
     margin-top: 2rem;
     opacity: 0.7;
+    flex-shrink: 0;
    }
    .filter:hover{
     opacity: 1;
@@ -25,85 +35,101 @@
     display: none;
    }
    .tax-toggle{
+     flex-shrink: 0;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
     border: 1px solid black;
     border-radius: 1rem;
     height: 3.25rem;
-    padding: 1rem;
-    margin-left: 2.80rem;
+    margin-left: 1rem;
+    min-width: max-content;
+    font-size: 0.85rem;
+  }
+   .col1::-webkit-scrollbar {
+      height: 6px;
+  }
+  .col1::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+  }
+  @media (max-width: 576px) {
+  .tax-toggle {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+    border-radius: 0.75rem;
+  }
 
-   }
-
-   @media screen and (max-width: 600px){
-    .filter{
-      display: none;
-    }
-    .tax-toggle{
-      margin-left: 12rem;
-      margin-top: 2rem;
-    }
-   }
+  .tax-toggle label {
+    white-space: nowrap;
+  }
+}
+  
 </style>
 
 <%= success %>
-<!-- <h3>All Listings</h3> -->
 <div id="filters">
-  <div class="filter">
+  <div class=" col1 d-flex flex-nowrap overflow-auto gap-3 category-scroll py-2 px-3">
+  <div class="filter text-center flex-shrink-0">
     <div><i class="fa-solid fa-fire"></i></div>
     <p>Trending</p>
   </div>
-  <div class="filter">
+  <div class="filter text-center flex-shrink-0">
     <div><i class="fa-solid fa-bed"></i></div>
     <p>Rooms</p>
   </div>
-  <div class="filter">
+  <div class="filter text-center flex-shrink-0">
     <div><i class="fa-solid fa-mountain-city"></i></div>
     <p>Iconic City</p>
   </div>
-  <div class="filter">
+  <div class="filter text-center flex-shrink-0">
     <div><i class="fa-solid fa-mountain"></i></div>
     <p>Mountains</p>
   </div>
-  <div class="filter">
+  <div class="filter text-center flex-shrink-0">
     <div><i class="fa-solid fa-fort-awesome"></i></div>
     <p>Castles</p>
   </div>
-  <div class="filter">
+  <div class="filter text-center flex-shrink-0">
     <div><i class="fa-solid fa-snowflake"></i></div>
     <p>Artic</p>
   </div>
-  <div class="filter">
+  <div class="filter text-center flex-shrink-0">
     <div><i class="fa-solid fa-campground"></i></div>
     <p>Camping</p>
   </div>
-  <div class="filter">
+  <div class="filter text-center flex-shrink-0">
     <div><i class="fa-solid fa-cow"></i></div>
     <p>Farms</p>
   </div>
-  <div class="filter">
+  <div class="filter text-center flex-shrink-0">
     <div><i class="fa-solid fa-snowflake"></i></div>
     <p>Arctic</p>
   </div>
-  <div class="filter">
+  <div class="filter text-center flex-shrink-0">
     <div><i class="fa-solid fa-igloo"></i></div>
     <p>Domes</p>
   </div>
-  <div class="filter">
+  <div class="filter text-center flex-shrink-0">
     <div><i class="fa-solid fa-ship"></i></div>
     <p>Boats</p>
   </div>
-  <div class="filter">
+  <div class="filter text-center flex-shrink-0">
     <div><i class="fa-solid fa-person-swimming"></i></div>
     <p>Amazing Pools</p>
   </div>
+  </div>
 
-  <div class="tax-toggle">
+
+  <div class="tax-toggle ms-auto">
     <div class="form-check-reverse form-switch">
       <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
       <label class="form-check-label" for="switchCheckDefault">Display Total after taxes</label>
     </div>
   </div>
-
 </div>
+
 
 <% if (searchQuery) { %>
   <h3>Search Results for "<%= searchQuery %>"</h3>
